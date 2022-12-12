@@ -1,5 +1,5 @@
 # Sie2nts
-This is an R package used for random matrices users.  To install the package from Github, run:
+This is an R package used for non-stationary time series users using Sieve methods.  To install the package from Github, run:
 
 ```
 library(devtools)
