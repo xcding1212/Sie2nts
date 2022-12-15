@@ -9,4 +9,4 @@ devtools::install_github("xcding1212/Sie2nts/Sie2nts")
 
 A user's guide can be found at 
 
-https://xcding1212.github.io/RMT4DS.html
+https://xcding1212.github.io/Sie2nts.html
