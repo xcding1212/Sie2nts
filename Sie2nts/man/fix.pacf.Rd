@@ -2,7 +2,7 @@
 % Please edit documentation in R/fix.pacf.R
 \name{fix.pacf}
 \alias{fix.pacf}
-\title{Generate Pacf by User Specifying}
+\title{Generate Partial Autocorrelation Function (PACF) by User Specifying}
 \usage{
 fix.pacf(ts, c, lag, type, or = 4, m = 500)
 }
@@ -27,7 +27,6 @@ A vector which contains the PACF with specific lag
 fix.pacf() generates the PACF with fixed tuning parameters.
 }
 \examples{
-\donttest{
 set.seed(137)
 time.series = c()
 n = 1024
@@ -42,6 +41,4 @@ for(i in 1:n){
   }
 }
 fix.pacf(time.series, c=5, lag = 1, type = "Legen")
-fix.pacf(time.series, c=2, lag= 1, type = "db10")
-}
 }

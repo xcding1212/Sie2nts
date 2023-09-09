@@ -277,7 +277,7 @@ auto.fit.legen = function(ts, c = 10, b = 3, m=500, method = "CV", threshold = 0
 mv_method.legen = function(timese, c, b){
   h.0 = 3
   m.li = c(1:25)
-  library(Matrix)
+  #library(Matrix)
   # Design matrix
   Y = beta_l(timese, c, b)[[2]]
   n = length(timese)
@@ -333,7 +333,7 @@ mv_method.legen = function(timese, c, b){
 
 
 fix.test.legen = function(timese, c, b, B.s, m){
-  library(Matrix)
+  #library(Matrix)
   # Design matrix
   Y = beta_l(timese, c, b)[[2]]
   n = length(timese)
@@ -426,7 +426,7 @@ fix.test.legen = function(timese, c, b, B.s, m){
 fit.testing.b.legen = function(timese, c, b.0 = 3, b = 8, B.s, m){
   # lag = 7, b = 10, we calculate, 1-10(reject), 2-10(not reject, statistics is small), 3-10 until 7-10 (not reject, statistics is small),
   if(b.0 >= b){return(FALSE)}
-  library(Matrix)
+  #library(Matrix)
   # Design matrix
   Y = beta_l(timese, c, b)[[2]]
   n = length(timese)

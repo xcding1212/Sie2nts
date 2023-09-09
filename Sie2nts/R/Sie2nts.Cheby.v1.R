@@ -102,11 +102,8 @@ Chebyshev_kth_b = function(k, n){
 
 
 
-
-
-
 chebyshev_plot = function(n, title){
-  library(ggplot2)
+ # library(ggplot2)
   # coeffi = Chebyshev_coeff(n, kind = 1)
   df = data.frame()
   aux_x = seq(0,1, length.out = 201)
@@ -315,7 +312,7 @@ auto.fit.cheby = function(ts, c = 10, b = 3, m=500, method = "CV", threshold = 0
 mv_method.cheby = function(timese, c, b){
   h.0 = 3
   m.li = c(1:25)
-  library(Matrix)
+  # library(Matrix)
   # Design matrix
   Y = beta_l(timese, c, b)[[2]]
   n = length(timese)
@@ -371,7 +368,7 @@ mv_method.cheby = function(timese, c, b){
 
 
 fix.test.cheby = function(timese, c, b, B.s, m){
-  library(Matrix)
+ # library(Matrix)
   # Design matrix
   Y = beta_c(timese, c, b)[[2]]
   n = length(timese)
@@ -457,7 +454,7 @@ fix.test.cheby = function(timese, c, b, B.s, m){
 
 fit.testing.b.cheby = function(timese, c, b.0 = 3, b = 8, B.s, m){
   if(b.0 >= b){return(FALSE)}
-  library(Matrix)
+  # library(Matrix)
   # Design matrix
   Y = beta_c(timese, c, b)[[2]]
   n = length(timese)

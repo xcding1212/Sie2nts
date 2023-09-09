@@ -21,7 +21,6 @@ source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 #' @export
 #'
 #' @examples
-#' \donttest{
 #' set.seed(137)
 #' time.series = c()
 #' n = 1024
@@ -38,9 +37,8 @@ source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 #' }
 #' res1.2 = fix.fit(time.series, 5, 1, "Legen")
 #' sie.predict(time.series, res1.2, 5)
-#' res2.2 = fix.fit(time.series, 2, 1, "db10")
-#' sie.predict(time.series, res2.2, 5)
-#' }
+
+
 
 sie.predict = function(ts, esti.li, h){
   return(predict.legen(ts, esti.li, h))

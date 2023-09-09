@@ -2,7 +2,7 @@
 % Please edit documentation in R/s.test.R
 \name{fix.test}
 \alias{fix.test}
-\title{The Test of Stability for AR Approximations With Fixed Parameters}
+\title{The Test of Stability for Auto-Regressive (AR) Approximations With Fixed Parameters}
 \usage{
 fix.test(ts, c, b, type, or = 4, B.s = 1000, m = 0)
 }
@@ -28,23 +28,4 @@ p value of the test
 }
 \description{
 fix.test() generates a test of Stability for AR Approximations with fixed parameters.
-}
-\examples{
-\donttest{
-set.seed(137)
-time.series = c()
-n = 1024
-v = 25
-w = rnorm(n, 0, 1) / v
-x_ini = runif(1,0,1)
-for(i in 1:n){
-  if(i == 1){
-    time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*x_ini  + w[i] #
-  } else{
-    time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*time.series[i-1] + w[i]
-  }
-}
-fix.test(time.series, 5, 1, type = "Legen")
-fix.test(time.series, 3, 1, type = "db10")
-}
 }

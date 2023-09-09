@@ -6,7 +6,7 @@ source(paste(getwd(), "/R/Sie2nts.Four.v1.R", sep = ""))
 source(paste(getwd(), "/R/Sie2nts.Csp.v1.R", sep = ""))
 source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 
-#' Generate Pacf by User Specifying
+#' Generate Partial Autocorrelation Function (PACF) by User Specifying
 #' @description fix.pacf() generates the PACF with fixed tuning parameters.
 #' @param ts ts is the data set which is a time series data typically
 #' @param c c indicates the number of basis used to Estimate (For wavelet, the number of basis is 2^c. If
@@ -20,7 +20,6 @@ source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 #' @export
 #'
 #' @examples
-#' \donttest{
 #' set.seed(137)
 #' time.series = c()
 #' n = 1024
@@ -36,8 +35,8 @@ source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 #'   }
 #' }
 #' fix.pacf(time.series, c=5, lag = 1, type = "Legen")
-#' fix.pacf(time.series, c=2, lag= 1, type = "db10")
-#' }
+
+
 
 # with what number of lag to generate
 fix.pacf = function(ts, c, lag, type, or = 4, m=500){
@@ -64,7 +63,7 @@ fix.pacf = function(ts, c, lag, type, or = 4, m=500){
     res = fix.fit.wavelet(ts, c, lag, m, ops = type)
     return(res$ts.coef[[lag+1]])
   } else{
-    return(cat("Invalid option!"))
+    return(stop("Invalid option!"))
   }
 }
 

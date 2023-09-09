@@ -1,6 +1,6 @@
 # Daubechies Wavelet 1 and some general functions to be used for Daubechies, the basis of wavelet is formulated by the method of Meyer (S.2 in the paper)
 # However, we also try the S.1 for estimating coefficients and choose the J_0 = 0.
-library(ggplot2)
+#library(ggplot2)
 
 
 # find the minimal value correspond, inter is the interval created, valtable is the db2 value table which is generated in advance.upper is the upper bound of basis. val express the input x.
@@ -44,7 +44,7 @@ dbplot = function(w, ops, title){ # c indicate the order of db and w indicate th
                                                                         legend.title = element_text(face = "bold"))
     return(p1)
   } else{
-    library(stringr)
+    #library(stringr)
     filename = paste(ops,"_fa_table", sep = "")
     aux_str = str_split(ops, "")[[1]]
     if(aux_str[1] == "d"){
@@ -59,7 +59,7 @@ dbplot = function(w, ops, title){ # c indicate the order of db and w indicate th
       c = as.numeric(aux_str[3])*3
     }
 
-    library(RCurl)
+    #library(RCurl)
 
     x <- getURL(paste("https://raw.githubusercontent.com/xcding1212/Sie2nts/main/db_table/", filename, sep = ""))
     dbt = read.csv(text = x)
@@ -114,7 +114,7 @@ wavelet_kth_b = function(k, ops){ # the k-th basis in 2^k total basis
     df = data.frame(basis_value = df[,k+1])
     return(df)
   } else{
-    library(stringr)
+    #library(stringr)
     filename = paste(ops,"_fa_table", sep = "")
     aux_str = str_split(ops, "")[[1]]
     if(aux_str[1] == "d"){
@@ -129,7 +129,7 @@ wavelet_kth_b = function(k, ops){ # the k-th basis in 2^k total basis
       c = as.numeric(aux_str[3])*3
     }
 
-    library(RCurl)
+    #library(RCurl)
     x <- getURL(paste("https://raw.githubusercontent.com/xcding1212/Sie2nts/main/db_table/", filename, sep = ""))
     dbt = read.csv(text = x)
     dbt = dbt[,2]
@@ -343,7 +343,7 @@ fix.fit.wavelet = function(ts, k, b, m = 500, ops){ # this k indicates that the 
     return(list(ols.coef = ols, ts.coef = aux.ts, Residuals = error.s))
 
   } else{
-    library(stringr)
+    #library(stringr)
     filename = paste(ops,"_fa_table", sep = "")
     aux_str = str_split(ops, "")[[1]]
     if(aux_str[1] == "d"){
@@ -358,7 +358,7 @@ fix.fit.wavelet = function(ts, k, b, m = 500, ops){ # this k indicates that the 
       c = as.numeric(aux_str[3])*3
     }
 
-    library(RCurl)
+    #library(RCurl)
     x <- getURL(paste("https://raw.githubusercontent.com/xcding1212/Sie2nts/main/db_table/", filename, sep = ""))
     dbt = read.csv(text = x)
     dbt = dbt[,2]
@@ -397,7 +397,7 @@ auto.fit.wavelet = function(ts, c=3, b = 2, m=500, ops, method = "CV", threshold
         if(ops == "db1"){
           res.bc[ind, ] = db.loocv(ts, valdb(i, psi.f=0, db_number=1,len.n=10000), j)
         }else{
-          library(stringr)
+          #library(stringr)
           filename = paste(ops,"_fa_table", sep = "")
           aux_str = str_split(ops, "")[[1]]
           if(aux_str[1] == "d"){
@@ -411,7 +411,7 @@ auto.fit.wavelet = function(ts, c=3, b = 2, m=500, ops, method = "CV", threshold
           } else{
             c = as.numeric(aux_str[3])*3
           }
-          library(RCurl)
+          #library(RCurl)
           x <- getURL(paste("https://raw.githubusercontent.com/xcding1212/Sie2nts/main/db_table/", filename, sep = ""))
           dbt = read.csv(text = x)
           dbt = dbt[,2]
@@ -451,10 +451,10 @@ db_basis.f = function(b.table, x){
 
 # Testing
 mv_method.wav = function(timese, db.basis, k, b, ops){ # c means c+2 basis line
-  library(splines)
+  #library(splines)
   h.0 = 3
   m.li = c(1:25)
-  library(Matrix)
+  #library(Matrix)
   # Design matrix
 
   Y = simu_db(timese, db.basis, b, 10000)[[3]]
@@ -512,12 +512,12 @@ mv_method.wav = function(timese, db.basis, k, b, ops){ # c means c+2 basis line
 
 
 fix.test.wavelet = function(timese, k, b, ops, B.s, m){
-  library(Matrix)
+  #library(Matrix)
   # Design matrix
   if(ops == "db1"){
     db.basis = valdb(k, psi.f=0, db_number=1,len.n=10000)
   }else{
-    library(stringr)
+    #library(stringr)
     filename = paste(ops,"_fa_table", sep = "")
     aux_str = str_split(ops, "")[[1]]
     if(aux_str[1] == "d"){
@@ -531,7 +531,7 @@ fix.test.wavelet = function(timese, k, b, ops, B.s, m){
     } else{
       c = as.numeric(aux_str[3])*3
     }
-    library(RCurl)
+    #library(RCurl)
     x <- getURL(paste("https://raw.githubusercontent.com/xcding1212/Sie2nts/main/db_table/", filename, sep = ""))
     dbt = read.csv(text = x)
     dbt = dbt[,2]
@@ -627,11 +627,11 @@ fix.test.wavelet = function(timese, k, b, ops, B.s, m){
 # testing b function(timese, k, b, ops)
 fit.testing.b.wavelet = function(timese, k, b.0 = 3,  ops, b = 8, B.s, m){
   if(b.0 >= b){return(FALSE)}
-  library(Matrix)
+  #library(Matrix)
   if(ops == "db1"){
     db.basis = valdb(k, psi.f=0, db_number=1,len.n=10000)
   }else{
-    library(stringr)
+    #library(stringr)
     filename = paste(ops,"_fa_table", sep = "")
     aux_str = str_split(ops, "")[[1]]
     if(aux_str[1] == "d"){
@@ -645,7 +645,7 @@ fit.testing.b.wavelet = function(timese, k, b.0 = 3,  ops, b = 8, B.s, m){
     }  else{
       c = as.numeric(aux_str[3])*3
     }
-    library(RCurl)
+    #library(RCurl)
     x <- getURL(paste("https://raw.githubusercontent.com/xcding1212/Sie2nts/main/db_table/", filename, sep = ""))
     dbt = read.csv(text = x)
     dbt = dbt[,2]

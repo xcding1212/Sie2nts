@@ -1,8 +1,10 @@
 
 # This file contains several functions used in plot
 
+utils::globalVariables(c("x", "value", "cv", "phi", "Phi", "pacf")) 
+
 fit.plot.estimate = function(alpha.e, c, b, basis, title){
-  library(ggplot2)
+  # library(ggplot2)
   n = length(alpha.e[[2]][[1]])
   res = list()
   df = data.frame(phi = alpha.e[[2]][[1]])
@@ -32,7 +34,7 @@ fit.plot.estimate = function(alpha.e, c, b, basis, title){
 
 
 fit.plot.elbow = function(alpha.e, c, b, basis, title){
-  library(ggplot2)
+  # library(ggplot2)
   df.cv = data.frame(alpha.e$CV)
   theme_update(plot.title = element_text(hjust = 0.5))
   res = ggplot(df.cv[df.cv$b == alpha.e$BC[2], ], aes(x=c, y=cv)) + geom_point() +geom_line(color='darkblue') + scale_x_continuous(limits=c(1,10), breaks=seq(1, 10, 1)) + ggtitle(title) +
@@ -48,7 +50,7 @@ fit.plot.elbow = function(alpha.e, c, b, basis, title){
 
 
 fit.plot.cvm = function(alpha.e, basis){
-  library(plotly)
+  # library(plotly)
   cv_m = alpha.e$CV
   df.cv = data.frame(c = cv_m[,1], b = as.factor(cv_m[,2]), cv = cv_m[,3])
   fig <- plot_ly(df.cv, x = ~c, y = ~b, z = ~cv,
@@ -75,7 +77,7 @@ fit.plot.cvm = function(alpha.e, basis){
 
 
 fit.plot.estimate.aux = function(alpha.e, c, b, basis, title){
-  library(ggplot2)
+  #library(ggplot2)
   n = length(alpha.e[[1]])
 
   res = list()

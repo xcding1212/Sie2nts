@@ -16,9 +16,7 @@ source(paste(getwd(), "/R/Sie2nts.plot.v1.R", sep = ""))
 #'
 #' @return A list which contains 3 plot related to the estimation of coefficient, Elbow point and cross validation in order
 #' @export
-#'
 #' @examples
-#' \donttest{
 #' set.seed(137)
 #' time.series = c()
 #' n = 1024
@@ -36,10 +34,9 @@ source(paste(getwd(), "/R/Sie2nts.plot.v1.R", sep = ""))
 #'
 #' res1 = fix.fit(time.series, 5, 1, type = "Legen")
 #' fix.plot(res1, "Legen")
-#'
-#' res2 = fix.fit(time.series, 2, 1, type = "db10")
-#' fix.plot(res1, "db10")
-#' }
+
+
+
 
 # the plot for fix fit
 fix.plot = function(res.fix.fit, type, title = ""){

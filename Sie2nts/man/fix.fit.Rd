@@ -2,7 +2,7 @@
 % Please edit documentation in R/fix.fit.R
 \name{fix.fit}
 \alias{fix.fit}
-\title{Estimate the Coefficients of AR Model by User Specifying}
+\title{Estimate the Coefficients of Auto-Regressive (AR) Model by User Specifying}
 \usage{
 fix.fit(ts, c, b, type, or = 4, m = 500)
 }
@@ -22,14 +22,13 @@ For Cubic Spline, the real number of basis is c-2+or)}
 }
 \value{
 A list contains 3 objects, the first is a matrix which contains estimates for each basis used
-    in OLS, the second is a list contains estimates for coefficients in AR model and the last
-    is a vector contains residuals
+in OLS, the second is a list contains estimates for coefficients in AR model and the last
+is a vector contains residuals
 }
 \description{
 fix.fit() estimates the coefficients of AR model by sieve methods with user specifying.
 }
 \examples{
-\donttest{
 set.seed(137)
 time.series = c()
 n = 1024
@@ -47,7 +46,4 @@ res = fix.fit(time.series, c=5, b=1, type = "Legen")
 cat(res$ols.coef)
 plot.ts(res$ts.coef[[1]])
 plot.ts(res$Residuals)
-
-fix.fit(time.series, c=2, b=1, "db10")
-}
 }

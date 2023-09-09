@@ -8,7 +8,7 @@ source(paste(getwd(), "/R/Sie2nts.Csp.v1.R", sep = ""))
 source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 
 
-#' Testing Lag of AR Model
+#' Testing Lag of Auto-Regressive (AR) Model
 #' @description fix.pacf.test() generates a test of lags for AR Approximations.
 #' @param ts ts is the data set which is a time series data typically
 #' @param c c indicates the number of basis used to estimate (For wavelet, the number of basis is 2^c. If
@@ -23,26 +23,9 @@ source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 #'     minimum volatility method to determine the number
 #' @return It returns a list contains p value for each lag
 #' @export
-#'
-#' @examples
-#' \donttest{
-#' set.seed(137)
-#' time.series = c()
-#' n = 1024
-#' v = 25
-#' w = rnorm(n, 0, 1) / v
-#' x_ini = runif(1,0,1)
 
-#' for(i in 1:n){
-#'   if(i == 1){
-#'     time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*x_ini  + w[i] #
-#'   } else{
-#'     time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*time.series[i-1] + w[i]
-#'   }
-#' }
-#' fix.pacf.test(time.series, 3, "Legen")
-#' fix.pacf.test(time.series, 2, "db10")
-#' }
+
+
 fix.pacf.test = function(ts, c, type, or=4, lag = 3, b = 8, B.s  = 1000, m = 0){
   wavelet_basis = c("db1", "db2", "db3", "db4", "db5",
                     "db6", "db7", "db8", "db9", "db10",
@@ -62,6 +45,6 @@ fix.pacf.test = function(ts, c, type, or=4, lag = 3, b = 8, B.s  = 1000, m = 0){
   } else if (type %in% wavelet_basis){
     return(fit.testing.b.wavelet(ts,c,lag,  b = b, ops = type,  B.s  = B.s, m = m))
   } else{
-    return(cat("Invalid option!"))
+    return(stop("Invalid option!"))
   }
 }

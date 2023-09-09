@@ -18,7 +18,7 @@ phi_csp = function(cspline, beta, b){
 }
 
 Cspline_kth_b = function(k, n, c, or){
-  library(splines)
+  #library(splines)
   x = seq(0, 1, length=n)
   knots=c(rep(0, or - 1), seq(0,1, length.out = c), rep(1, or - 1)) ##need to add three additional knots at the two ends;
   B=splineDesign(knots, x, ord = or)                ##default order: ord =4, corresponds to cubic splines
@@ -39,7 +39,7 @@ Cspline_kth_b = function(k, n, c, or){
 
 
 cspline_plot = function(c, or, title){
-  library(splines)
+  #library(splines)
   n = 1024
   x = seq(0, 1, length=n)
   knots=c(rep(0, or - 1), seq(0,1, length.out = c), rep(1, or - 1)) ##need to add three additional knots at the two ends;
@@ -77,7 +77,7 @@ cspline_plot = function(c, or, title){
 
 
 alpha.Cspline = function(ts, c, b, or, m=500){
-  library(splines)
+  #library(splines)
   l.alpha = list()
   aux.alpha = c()
   n = length(ts)
@@ -134,7 +134,7 @@ alpha.Cspline = function(ts, c, b, or, m=500){
 
 
 alpha.loocv.mc = function(ts, c, b, or){
-  library(splines)
+  #library(splines)
   n = length(ts)
   aux.true = ts[(b+1):n]
   aux.esti = c()
@@ -153,7 +153,7 @@ alpha.loocv.mc = function(ts, c, b, or){
 }
 
 alpha.cv.mc = function(ts, c, b, or){
-  library(splines)
+  #library(splines)
   n = length(ts)
   l = floor(3*log2(n))
   aux.train = ts[1:(n-l)]
@@ -166,7 +166,7 @@ alpha.cv.mc = function(ts, c, b, or){
 
 # prediction
 predict.cspline = function(ts, esti.li, k){
-  library(splines) # k indicates the number of predictions
+  #library(splines) # k indicates the number of predictions
   ts.pre = c()
   phi.h = esti.li[[2]]
   n = length(ts)
@@ -183,7 +183,7 @@ predict.cspline = function(ts, esti.li, k){
 }
 
 fix.fit.cspline = function(ts, c, b, or, m){
-  library(splines)
+  #library(splines)
   error.s = c()
   n = length(ts)
   es.alpha = alpha.Cspline(ts, c, b,or=or, n)[[1]]
@@ -200,7 +200,7 @@ fix.fit.cspline = function(ts, c, b, or, m){
 }
 
 auto.fit.cspline = function(ts, c = 10, b = 3, or, m=500 ,method = "CV", threshold = 0){
-  library(splines)
+  #library(splines)
   res.bc = matrix(ncol = 3, nrow = (c-1)*b)
   ind = 1
   for(i in 2:c){
@@ -243,8 +243,8 @@ csp_basis.f = function(b.table, x){
 
 # Testing
 mv_method.cspline = function(timese, c, b, or){ # c means c+2 basis line
-  library(splines)
-  library(Matrix)
+  #library(splines)
+  #library(Matrix)
   h.0 = 3
   m.li = c(1:25)
   # Design matrix
@@ -313,8 +313,8 @@ mv_method.cspline = function(timese, c, b, or){ # c means c+2 basis line
 }
 
 fix.test.cspline = function(timese, c, b, or, B.s, m){
-  library(splines)
-  library(Matrix)
+  #library(splines)
+  #library(Matrix)
   # Design matrix
   Y = alpha.Cspline(timese, c, b,or = or, 10000)[[3]]
   n = length(timese)
@@ -415,9 +415,9 @@ fix.test.cspline = function(timese, c, b, or, B.s, m){
 
 
 fit.testing.b.cspline = function(timese, c, or, b.0 = 3, b = 8, B.s, m){
-  library(splines)
+  #library(splines)
   if(b.0 >= b){return(FALSE)}
-  library(Matrix)
+  #library(Matrix)
   # Design matrix
   Y = alpha.Cspline(timese, c, b,or=or, 10000)[[3]]   # can not fit very well with b = 8
   n = length(timese)

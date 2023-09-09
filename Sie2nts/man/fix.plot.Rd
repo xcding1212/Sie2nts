@@ -20,7 +20,6 @@ A list which contains 3 plot related to the estimation of coefficient, Elbow poi
 fix.plot() visualizes the estimation of coefficient.
 }
 \examples{
-\donttest{
 set.seed(137)
 time.series = c()
 n = 1024
@@ -37,8 +36,4 @@ for(i in 1:n){
 
 res1 = fix.fit(time.series, 5, 1, type = "Legen")
 fix.plot(res1, "Legen")
-
-res2 = fix.fit(time.series, 2, 1, type = "db10")
-fix.plot(res1, "db10")
-}
 }

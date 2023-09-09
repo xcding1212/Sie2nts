@@ -283,7 +283,7 @@ auto.fit.four = function(ts, c = 10, b = 3, m = 500, ops, method = "LOOCV", thre
 mv_method.four = function(timese, c, b, ops){
   h.0 = 3
   m.li = c(1:25)
-  library(Matrix)
+  #library(Matrix)
   # Design matrix
   Y = beta_l(timese, c, b)[[2]]
   n = length(timese)
@@ -339,7 +339,7 @@ mv_method.four = function(timese, c, b, ops){
 
 
 fix.test.four = function(timese, c, b, ops, B.s, m){
-  library(Matrix)
+  #library(Matrix)
   # Design matrix
   Y = beta_f(timese, c, b, ops)[[2]]
   n = length(timese)
@@ -437,7 +437,7 @@ fix.test.four = function(timese, c, b, ops, B.s, m){
 
 fit.testing.b.four = function(timese, c, b.0 = 3, ops, b = 8, B.s, m){
   if(b.0 >= b){return(FALSE)}
-  library(Matrix)
+  #library(Matrix)
   # Design matrix
   Y = beta_f(timese, c, b, ops)[[2]]
   n = length(timese)

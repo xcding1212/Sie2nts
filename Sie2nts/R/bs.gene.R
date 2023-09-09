@@ -16,17 +16,16 @@ source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 #' number of basis is c-2+or)
 #' @param or indicates the order of spline and only used in Cspli type, default is 4 which indicates cubic spline
 #' @return A data frame which contains the value of k-th basis function
+#' @references \[3] Chen, Xiaohong. “Large Sample Sieve Estimation of Semi-Nonparametric Models.” Handbook of Econometrics, 6(B): 5549–5632,2007.
 #' @export
-#'
+#' 
 #' @examples
-#' \donttest{
 #' bs.gene("Legen", 2)
 #' bs.gene("tri", 2, 300)
-#' bs.gene("db10", 2)
-#' }
+ 
 
 bs.gene = function(type, k, point = 200, c=10, or = 4, ops = "auto"){
-  library(ggplot2)
+  # library(ggplot2)
   # Bspline and Cspline indicate the k-th basis under the total k+1 basis. Point number is fixed for wavelet.
   wavelet_basis = c("db1", "db2", "db3", "db4", "db5",
                     "db6", "db7", "db8", "db9", "db10",
@@ -50,7 +49,7 @@ bs.gene = function(type, k, point = 200, c=10, or = 4, ops = "auto"){
     } else if (type %in% wavelet_basis){
       return(wavelet_kth_b(k, ops = type))
     } else{
-      return(cat("Invalid option!"))
+      return(stop("Invalid option!"))
     }
   }
 

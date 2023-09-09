@@ -2,7 +2,7 @@
 % Please edit documentation in R/auto.test.R
 \name{auto.test}
 \alias{auto.test}
-\title{The Test of Stability for AR Approximations Automatically}
+\title{The Test of Stability for Auto-Regressive (AR) Approximations Automatically}
 \usage{
 auto.test(
   ts,
@@ -34,25 +34,4 @@ p value of the test
 }
 \description{
 auto.test() generates a test of Stability for AR Approximations by choosing tuning parameter automatically.
-}
-\examples{
-\donttest{
-set.seed(137)
-time.series = c()
-n = 1024
-v = 25
-w = rnorm(n, 0, 1) / v
-x_ini = runif(1,0,1)
-for(i in 1:n){
-  if(i == 1){
-    time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*x_ini  + w[i] #
-  } else{
-    time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*time.series[i-1] + w[i]
-  }
-}
-
-auto.test(time.series, type = "Legen")
-auto.test(time.series, type = "db10", method = "Elbow")
-}
-
 }

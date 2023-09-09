@@ -2,7 +2,7 @@
 % Please edit documentation in R/fix.pacf.test.R
 \name{fix.pacf.test}
 \alias{fix.pacf.test}
-\title{Testing Lag of AR Model}
+\title{Testing Lag of Auto-Regressive (AR) Model}
 \usage{
 fix.pacf.test(ts, c, type, or = 4, lag = 3, b = 8, B.s = 1000, m = 0)
 }
@@ -31,23 +31,4 @@ It returns a list contains p value for each lag
 }
 \description{
 fix.pacf.test() generates a test of lags for AR Approximations.
-}
-\examples{
-\donttest{
-set.seed(137)
-time.series = c()
-n = 1024
-v = 25
-w = rnorm(n, 0, 1) / v
-x_ini = runif(1,0,1)
-for(i in 1:n){
-  if(i == 1){
-    time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*x_ini  + w[i] #
-  } else{
-    time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*time.series[i-1] + w[i]
-  }
-}
-fix.pacf.test(time.series, 3, "Legen")
-fix.pacf.test(time.series, 2, "db10")
-}
 }

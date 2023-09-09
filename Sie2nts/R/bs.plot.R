@@ -17,15 +17,13 @@ source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 #' @export
 #'
 #' @examples
-#' \donttest{
 #' bs.plot("Legen", 2)
 #' bs.plot("tri", 3)
-#' bs.plot("db10", 2)
-#' }
+
 
 bs.plot = function(type, k, or = 4, title = ""){
-  library(ggplot2)
-  library(splines)
+  # library(ggplot2)
+  # library(splines)
  # for Bspli, the true number of basis function is k+1,  and k+2 for Cspli. For wavelet is 2^k
   wavelet_basis = c("db1", "db2", "db3", "db4", "db5",
                     "db6", "db7", "db8", "db9", "db10",
@@ -45,7 +43,7 @@ bs.plot = function(type, k, or = 4, title = ""){
   } else if (type %in% wavelet_basis){
     return(dbplot(k, ops = type, title))
   } else{
-    return(cat("Invalid option!"))
+    return(stop("Invalid option!"))
   }
 
 

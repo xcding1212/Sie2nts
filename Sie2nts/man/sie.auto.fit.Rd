@@ -2,7 +2,7 @@
 % Please edit documentation in R/sie.auto.fit.R
 \name{sie.auto.fit}
 \alias{sie.auto.fit}
-\title{Estimate the Coefficients of AR Model Automatically}
+\title{Estimate the Coefficients of Auto-Regressive (AR) Model Automatically}
 \usage{
 sie.auto.fit(ts, type, or = 4, method = "LOOCV", m = 500, threshold = 0)
 }
@@ -21,28 +21,9 @@ sie.auto.fit(ts, type, or = 4, method = "LOOCV", m = 500, threshold = 0)
 }
 \value{
 A list contains 4 objects, the first is estimates for coefficients
-   in AR model, the second is cross validation table, the third is estimates for each basis used
-   in OLS and the last is optimal parameters
+in AR model, the second is cross validation table, the third is estimates for each basis used
+in OLS and the last is optimal parameters
 }
 \description{
 sie.auto.fit() estimates the coefficients of AR model by sieve methods with 2 cross validation methods and elbow method.
-}
-\examples{
-\donttest{
-set.seed(137)
-time.series = c()
-n = 1024
-v = 25
-w = rnorm(n, 0, 1) / v
-x_ini = runif(1,0,1)
-for(i in 1:n){
-  if(i == 1){
-    time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*x_ini  + w[i] #
-  } else{
-    time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*time.series[i-1] + w[i]
-  }
-}
-sie.auto.fit(time.series, type = "db10")
-sie.auto.fit(time.series, type = "Legen", method = "Elbow")
-}
 }

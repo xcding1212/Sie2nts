@@ -23,9 +23,6 @@ The plot of 1 to k basis functions
 bs.plot() generates the plot of first k basis function.
 }
 \examples{
-\donttest{
 bs.plot("Legen", 2)
 bs.plot("tri", 3)
-bs.plot("db10", 2)
-}
 }

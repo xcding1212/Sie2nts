@@ -7,7 +7,7 @@ source(paste(getwd(), "/R/Sie2nts.Csp.v1.R", sep = ""))
 source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 
 
-#' Estimate the Coefficients of AR Model Automatically
+#' Estimate the Coefficients of Auto-Regressive (AR) Model Automatically
 #' @description sie.auto.fit() estimates the coefficients of AR model by sieve methods with 2 cross validation methods and elbow method.
 #' @param ts ts is the data set which is a time series data typically
 #' @param type type indicates which type of basis is used. There are 31 types in this package
@@ -20,26 +20,8 @@ source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 #'    in AR model, the second is cross validation table, the third is estimates for each basis used
 #'    in OLS and the last is optimal parameters
 #' @export
-#'
-#' @examples
-#' \donttest{
-#' set.seed(137)
-#' time.series = c()
-#' n = 1024
-#' v = 25
-#' w = rnorm(n, 0, 1) / v
-#' x_ini = runif(1,0,1)
 
-#' for(i in 1:n){
-#'   if(i == 1){
-#'     time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*x_ini  + w[i] #
-#'   } else{
-#'     time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*time.series[i-1] + w[i]
-#'   }
-#' }
-#' sie.auto.fit(time.series, type = "db10")
-#' sie.auto.fit(time.series, type = "Legen", method = "Elbow")
-#' }
+
 
 sie.auto.fit = function(ts, type, or=4, method = "LOOCV", m = 500, threshold = 0){
   wavelet_basis = c("db1", "db2", "db3", "db4", "db5",
@@ -60,7 +42,7 @@ sie.auto.fit = function(ts, type, or=4, method = "LOOCV", m = 500, threshold = 0
   } else if (type %in% wavelet_basis){
     return(auto.fit.wavelet(ts,  m = m, ops = type, method = method, threshold = threshold))
   } else{
-    return(cat("Invalid option!"))
+    return(stop("Invalid option!"))
   }
 }
 

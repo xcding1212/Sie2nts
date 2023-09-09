@@ -10,7 +10,7 @@ source(paste(getwd(), "/R/sie.auto.fit.R", sep = ""))
 
 
 
-#' The Test of Stability for AR Approximations Automatically
+#' The Test of Stability for Auto-Regressive (AR) Approximations Automatically
 #' @description auto.test() generates a test of Stability for AR Approximations by choosing tuning parameter automatically.
 #' @param ts ts is the data set which is a time series data typically
 #' @param or indicates the order of spline and only used in Cspli type, default is 4 which indicates cubic spline
@@ -22,28 +22,8 @@ source(paste(getwd(), "/R/sie.auto.fit.R", sep = ""))
 #'
 #' @return p value of the test
 #' @export
-#'
-#' @examples
-#' \donttest{
-#' set.seed(137)
-#' time.series = c()
-#' n = 1024
-#' v = 25
-#' w = rnorm(n, 0, 1) / v
-#' x_ini = runif(1,0,1)
 
-#' for(i in 1:n){
-#'   if(i == 1){
-#'     time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*x_ini  + w[i] #
-#'   } else{
-#'     time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*time.series[i-1] + w[i]
-#'   }
-#' }
-#'
-#' auto.test(time.series, type = "Legen")
-#' auto.test(time.series, type = "db10", method = "Elbow")
-#' }
-#'
+
 auto.test = function(ts, or=4, type, alpha = 0.05, method = "LOOCV", threshold = 0, B.s = 1000){
   wavelet_basis = c("db1", "db2", "db3", "db4", "db5",
                     "db6", "db7", "db8", "db9", "db10",
@@ -74,7 +54,7 @@ auto.test = function(ts, or=4, type, alpha = 0.05, method = "LOOCV", threshold =
     cat(paste("The significant level is",alpha, sep = " "))
     return(fix.test.wavelet(ts, res$BC[1], res$BC[2], ops = type,  B.s  = B.s, m = 0))
   } else{
-    return(cat("Invalid option!"))
+    return(stop("Invalid option!"))
   }
 }
 

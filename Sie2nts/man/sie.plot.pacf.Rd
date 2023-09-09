@@ -2,9 +2,19 @@
 % Please edit documentation in R/sie.plot.pacf.R
 \name{sie.plot.pacf}
 \alias{sie.plot.pacf}
-\title{Plot Pacf}
+\title{Plot Partial Autocorrelation Function (PACF)}
 \usage{
-sie.plot.pacf(ts, c, lag, type, ops = "2d", title = "", m = 500, or = 4)
+sie.plot.pacf(
+  ts,
+  c,
+  lag,
+  type,
+  ops = "2d",
+  title = "",
+  m = 500,
+  or = 4,
+  se = FALSE
+)
 }
 \arguments{
 \item{ts}{ts is the data set which is a time series data typically}
@@ -23,30 +33,12 @@ Cspli is chosen, the real number of basis is c-2+or)}
 \item{m}{m indicates the number of points of coefficients to estimate}
 
 \item{or}{or indicates the order of spline, default is 4 which indicates cubic spline}
+
+\item{se}{The option to indicate whether the 95\% confidence interval is displayed or not, the default is FALSE}
 }
 \value{
 The plot of pacf basis on the time series data
 }
 \description{
 sie.plot.pacf() shows the PACF with different lag.
-}
-\examples{
-\donttest{
-set.seed(137)
-time.series = c()
-n = 1024
-v = 25
-w = rnorm(n, 0, 1) / v
-x_ini = runif(1,0,1)
-for(i in 1:n){
-  if(i == 1){
-    time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*x_ini  + w[i] #
-  } else{
-    time.series[i] = 0.2 + 0.6*cos(2*pi*(i/n))*time.series[i-1] + w[i]
-  }
-}
-
-sie.plot.pacf(time.series, 5, 10, "Legen")
-sie.plot.pacf(time.series, 5, 10, "Legen", "3d")
-}
 }

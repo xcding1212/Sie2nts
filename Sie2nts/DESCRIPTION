@@ -1,20 +1,17 @@
 Package: Sie2nts
 Type: Package
-Title: Estimate Time Series
-Version: 0.1.0
-Author: Xiucai Ding [aut], Chen Qian [aut, cre] 
-Maintainer: Chen Qian <mrcqian@ucdavis.edu>
-Description: This package for auto-regressive approximations to non-stationary time series.
-    Estimate coefficients for non-stationary time series via the method of sieves. 
-    Provide A high dimensional test basis on multiplier bootstrap procedure and the test of 
-    lags of auto-regressive model for the inference of the AR approximation coefficients. 
-    Visualize the performance of estimations, PACF in 3 dimensions and the basis functions.In addition, 
-    this package also contains Daubechies and Coiflet father wavelet value table and the code to generate 
-    them for convenience purposes. 
-License: GPL-2 (What license is it under?) 
+Title: Sieve Methods for Non-Stationary Time Series
+Version: 0.1.1
+Authors@R: c(person("Xiucai", "Ding", role = c("aut", "cre","cph"),
+                     email = "xiucaiding89@gmail.com"),
+             person("Chen", "Qian", role = c("aut","cph"),
+                     email = "mrcqian@ucdavis.edu"))
+Description: We provide functions for estimation and inference of locally-stationary time series using the sieve methods and bootstrapping procedure. In addition, it also contains functions to generate Daubechies and Coiflet wavelet by Cascade algorithm and to process data visualization.
+License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.2.1
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Repository: CRAN, Github
 Suggests: 
     knitr,
     rmarkdown
@@ -25,4 +22,8 @@ Imports:
     plotly,
     stringr,
     RCurl,
-    splines
+    splines,
+    methods,
+    utils, 
+    stats
+

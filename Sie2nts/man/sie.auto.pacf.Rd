@@ -2,7 +2,7 @@
 % Please edit documentation in R/sie.auto.pacf.R
 \name{sie.auto.pacf}
 \alias{sie.auto.pacf}
-\title{Generate Pacf Automatically}
+\title{Generate Partial Autocorrelation Function (PACF) Automatically}
 \usage{
 sie.auto.pacf(ts, c, lag, type, or = 4, m = 500)
 }
@@ -27,7 +27,6 @@ A list contains the PACF in each lag
 sie.auto.pacf() generates the PACF from 1 to lag automatically.
 }
 \examples{
-\donttest{
 set.seed(137)
 time.series = c()
 n = 1024
@@ -42,6 +41,4 @@ for(i in 1:n){
   }
 }
 sie.auto.pacf(time.series, 5, 1, "Legen")
-sie.auto.pacf(time.series, 2, 1, "db10", 600)
-}
 }

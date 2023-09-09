@@ -7,7 +7,7 @@ source(paste(getwd(), "/R/Sie2nts.Four.v1.R", sep = ""))
 source(paste(getwd(), "/R/Sie2nts.Csp.v1.R", sep = ""))
 source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 
-#' Estimate the Coefficients of AR Model by User Specifying
+#' Estimate the Coefficients of Auto-Regressive (AR) Model by User Specifying
 #' @description fix.fit() estimates the coefficients of AR model by sieve methods with user specifying.
 #' @param ts ts is the data set which is a time series data typically
 #' @param c c indicates the number of basis used to estimate (For wavelet, the real number of basis is 2^c.
@@ -23,7 +23,6 @@ source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 #' @export
 #'
 #' @examples
-#' \donttest{
 #' set.seed(137)
 #' time.series = c()
 #' n = 1024
@@ -42,9 +41,7 @@ source(paste(getwd(), "/R/Sie2nts.db1-20.v1.R", sep = ""))
 #' cat(res$ols.coef)
 #' plot.ts(res$ts.coef[[1]])
 #' plot.ts(res$Residuals)
-#'
-#' fix.fit(time.series, c=2, b=1, "db10")
-#' }
+
 
 
 fix.fit = function(ts, c, b, type, or=4, m=500){
@@ -66,7 +63,7 @@ fix.fit = function(ts, c, b, type, or=4, m=500){
   } else if (type %in% wavelet_basis){
     return(fix.fit.wavelet(ts, c, b, m, ops = type))
   } else{
-    return(cat("Invalid option!"))
+    return(stop("Invalid option!"))
   }
 }
 

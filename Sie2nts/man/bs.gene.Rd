@@ -27,9 +27,9 @@ A data frame which contains the value of k-th basis function
 bs.gene() generates the value of k-th basis function. (The wavelet basis options return the full table)
 }
 \examples{
-\donttest{
 bs.gene("Legen", 2)
 bs.gene("tri", 2, 300)
-bs.gene("db10", 2)
 }
+\references{
+[3] Chen, Xiaohong. “Large Sample Sieve Estimation of Semi-Nonparametric Models.” Handbook of Econometrics, 6(B): 5549–5632,2007.
 }
